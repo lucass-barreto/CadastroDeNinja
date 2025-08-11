@@ -23,7 +23,7 @@ public class MissaoModel {
 
     private String dificuldade;
 
-    @OneToMany(mappedBy = "missao")
+    @OneToMany(mappedBy = "missao") //"onde" na outra tabela se referencia a essa
     private List<NinjaModel> ninjas;
 
 
