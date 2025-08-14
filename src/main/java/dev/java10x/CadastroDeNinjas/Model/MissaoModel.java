@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeNinjas.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class MissaoModel {
     private String dificuldade;
 
     @OneToMany(mappedBy = "missao") //"onde" na outra tabela se referencia a essa
+    @JsonIgnore
     private List<NinjaModel> ninjas;
 
 
