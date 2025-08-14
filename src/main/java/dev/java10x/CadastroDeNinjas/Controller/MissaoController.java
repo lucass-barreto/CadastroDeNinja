@@ -21,7 +21,7 @@ public class MissaoController {
         return "Missão deletada";
     }
 
-    @PostMapping("/listar")
+    @GetMapping("/listar")
     public String listarMissao(){
         return "Lista das missões:";
     }
