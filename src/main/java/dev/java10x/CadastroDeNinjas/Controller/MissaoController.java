@@ -1,10 +1,18 @@
 package dev.java10x.CadastroDeNinjas.Controller;
 
+import dev.java10x.CadastroDeNinjas.Model.MissaoModel;
+import dev.java10x.CadastroDeNinjas.Service.MissaoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/missoes")
 public class MissaoController {
+
+    @Autowired
+    private MissaoService missaoService;
 
     @PostMapping("/criar")
     public String criarMissao(){
@@ -22,7 +30,7 @@ public class MissaoController {
     }
 
     @GetMapping("/listar")
-    public String listarMissao(){
-        return "Lista das missões:";
+    public List<MissaoModel> listarMissoes(){
+        return missaoService.listarMissoes();
     }
 }
