@@ -16,11 +16,16 @@ public class MissaoService {
     /*TODO:
     *  Criar missoes
     *  Deletar missao por id
-    *  Listar missoes
-    *  alterar missao por id*/
+    *  alterar missao por id
+    *  Listar por id*/
 
     //Listar Missao
     public List<MissaoModel> listarMissoes(){
         return missaoRepository.findAll();
+    }
+
+    //Criar missão
+    public MissaoModel criarMissao(MissaoModel missaoModel){
+        return missaoRepository.save(missaoModel);
     }
 }

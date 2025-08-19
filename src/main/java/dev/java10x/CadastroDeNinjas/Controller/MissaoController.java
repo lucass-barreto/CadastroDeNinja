@@ -15,8 +15,8 @@ public class MissaoController {
     private MissaoService missaoService;
 
     @PostMapping("/criar")
-    public String criarMissao(){
-        return "Missão criada.";
+    public MissaoModel criarMissao(MissaoModel missaoModel){
+        return missaoService.criarMissao(missaoModel);
     }
 
     @PutMapping("/alterar")
