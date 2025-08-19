@@ -33,4 +33,9 @@ public class MissaoController {
     public List<MissaoModel> listarMissoes(){
         return missaoService.listarMissoes();
     }
+
+    @GetMapping("/listar/{id}")
+    public MissaoModel listarMissaoPorId(@PathVariable Long id){
+        return missaoService.listarMissaoPorId(id);
+    }
 }

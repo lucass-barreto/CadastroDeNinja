@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MissaoService {
@@ -19,9 +20,15 @@ public class MissaoService {
     *  alterar missao por id
     *  Listar por id*/
 
-    //Listar Missao
+    //Listar Missões
     public List<MissaoModel> listarMissoes(){
         return missaoRepository.findAll();
+    }
+
+    //Listar missão por id
+    public MissaoModel listarMissaoPorId(Long id){
+        Optional<MissaoModel> missaoId = missaoRepository.findById(id);
+        return missaoId.orElse(null);
     }
 
     //Criar missão
