@@ -15,7 +15,6 @@ public class MissaoService {
     private MissaoRepository missaoRepository;
 
     /*TODO:
-    *  Deletar missao por id
     *  alterar missao por id*/
 
     //Listar Missões
@@ -37,5 +36,14 @@ public class MissaoService {
     //Deletar missao
     public void deletarMissao(Long id){
         missaoRepository.deleteById(id);
+    }
+
+    //Alterar missao
+    public MissaoModel alterarMissao(Long id, MissaoModel missaoAtualizada){
+        if(missaoRepository.existsById(id)){
+            return missaoRepository.save(missaoAtualizada);
+        } else {
+            return null;
+        }
     }
 }
