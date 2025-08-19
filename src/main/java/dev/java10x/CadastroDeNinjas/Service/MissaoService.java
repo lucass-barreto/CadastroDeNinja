@@ -15,10 +15,8 @@ public class MissaoService {
     private MissaoRepository missaoRepository;
 
     /*TODO:
-    *  Criar missoes
     *  Deletar missao por id
-    *  alterar missao por id
-    *  Listar por id*/
+    *  alterar missao por id*/
 
     //Listar Missões
     public List<MissaoModel> listarMissoes(){
@@ -34,5 +32,10 @@ public class MissaoService {
     //Criar missão
     public MissaoModel criarMissao(MissaoModel missaoModel){
         return missaoRepository.save(missaoModel);
+    }
+
+    //Deletar missao
+    public void deletarMissao(Long id){
+        missaoRepository.deleteById(id);
     }
 }
