@@ -41,6 +41,7 @@ public class MissaoService {
     //Alterar missao
     public MissaoModel alterarMissao(Long id, MissaoModel missaoAtualizada){
         if(missaoRepository.existsById(id)){
+            missaoAtualizada.setId(id);
             return missaoRepository.save(missaoAtualizada);
         } else {
             return null;
