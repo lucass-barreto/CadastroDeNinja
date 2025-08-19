@@ -2,6 +2,7 @@ package dev.java10x.CadastroDeNinjas.Service;
 
 import dev.java10x.CadastroDeNinjas.Model.NinjaModel;
 import dev.java10x.CadastroDeNinjas.Repository.NinjaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Optional;
 @Service
 public class NinjaService {
 
+    @Autowired
    private NinjaRepository ninjaRepository;
 
    //Listar todos os ninjas
@@ -33,7 +35,12 @@ public class NinjaService {
        ninjaRepository.deleteById(id);
     }
 
-    public NinjaService(NinjaRepository ninjaRepository) {
-        this.ninjaRepository = ninjaRepository;
+    public NinjaModel alterarNinja(Long id, NinjaModel ninjaAtualizado){
+       if (ninjaRepository.existsById(id)){
+           return ninjaRepository.save(ninjaAtualizado);
+       } else {
+           return null;
+       }
     }
+
 }
