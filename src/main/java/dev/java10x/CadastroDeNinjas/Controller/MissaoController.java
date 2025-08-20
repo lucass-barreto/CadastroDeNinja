@@ -1,6 +1,6 @@
 package dev.java10x.CadastroDeNinjas.Controller;
 
-import dev.java10x.CadastroDeNinjas.Model.MissaoModel;
+import dev.java10x.CadastroDeNinjas.DTO.MissaoDTO;
 import dev.java10x.CadastroDeNinjas.Service.MissaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +15,13 @@ public class MissaoController {
     private MissaoService missaoService;
 
     @PostMapping("/criar")
-    public MissaoModel criarMissao(@RequestBody  MissaoModel missaoModel){
-        return missaoService.criarMissao(missaoModel);
+    public MissaoDTO criarMissao(@RequestBody MissaoDTO missaoDTO){
+        return missaoService.criarMissao(missaoDTO);
     }
 
     @PutMapping("/alterar/{id}")
-    public MissaoModel alterarMissao(@PathVariable Long id, @RequestBody MissaoModel missaoAtualizada){
-        return missaoService.alterarMissao(id, missaoAtualizada);
+    public MissaoDTO alterarMissao(@PathVariable Long id, @RequestBody MissaoDTO missaoDTOAtualizada){
+        return missaoService.alterarMissao(id, missaoDTOAtualizada);
     }
 
     @DeleteMapping("/deletar/{id}")
@@ -30,12 +30,12 @@ public class MissaoController {
     }
 
     @GetMapping("/listar")
-    public List<MissaoModel> listarMissoes(){
+    public List<MissaoDTO> listarMissoes(){
         return missaoService.listarMissoes();
     }
 
     @GetMapping("/listar/{id}")
-    public MissaoModel listarMissaoPorId(@PathVariable Long id){
+    public MissaoDTO listarMissaoPorId(@PathVariable Long id){
         return missaoService.listarMissaoPorId(id);
     }
 }
