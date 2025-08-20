@@ -4,7 +4,6 @@ import dev.java10x.CadastroDeNinjas.Model.NinjaModel;
 import org.springframework.stereotype.Component;
 
 @Component
-@Mapper
 public class NinjaMapper {
 
     public NinjaModel map(NinjaDTO ninjaDTO){
