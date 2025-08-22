@@ -1,14 +1,15 @@
 package dev.java10x.CadastroDeNinjas.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString (exclude = "missao")
 @Entity
 @Table(name = "tb_cadastro")
 public class NinjaModel {
