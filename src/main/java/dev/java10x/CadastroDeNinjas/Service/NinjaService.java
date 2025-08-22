@@ -14,12 +14,16 @@ import java.util.stream.Collectors;
 @Service
 public class NinjaService {
 
-    @Autowired
-   private NinjaRepository ninjaRepository;
-    @Autowired
-    private NinjaMapper ninjaMapper;
 
-   //Listar todos os ninjas
+   private final NinjaRepository ninjaRepository;
+   private final NinjaMapper ninjaMapper;
+
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
+        this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
+    }
+
+    //Listar todos os ninjas
    public List<NinjaDTO> listarNinjas(){
        List<NinjaModel> ninjasModel = ninjaRepository.findAll();
        return ninjasModel.stream()

@@ -14,10 +14,14 @@ import java.util.stream.Collectors;
 @Service
 public class MissaoService {
 
-    @Autowired
-    private MissaoRepository missaoRepository;
-    @Autowired
-    private MissaoMapper missaoMapper;
+
+    private final MissaoRepository missaoRepository;
+    private final MissaoMapper missaoMapper;
+
+    public MissaoService(MissaoMapper missaoMapper, MissaoRepository missaoRepository) {
+        this.missaoMapper = missaoMapper;
+        this.missaoRepository = missaoRepository;
+    }
 
     //Listar Missões
     public List<MissaoDTO> listarMissoes(){

@@ -13,8 +13,12 @@ import java.util.List;
 @RequestMapping("/missoes")
 public class MissaoController {
 
-    @Autowired
-    private MissaoService missaoService;
+
+    private final MissaoService missaoService;
+
+    public MissaoController(MissaoService missaoService) {
+        this.missaoService = missaoService;
+    }
 
     @PostMapping("/criar")
     public ResponseEntity<String> criarMissao(@RequestBody MissaoDTO missaoDTO){
