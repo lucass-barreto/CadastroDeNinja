@@ -1,0 +1,160 @@
+<!
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Tabela de ninjas</title>
+    <style>
+        /* === ESTILOS GERAIS === */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* === ESTILIZAÇÃO DA TABELA MODERNA === */
+        .ninja-table {
+            width: 100%;
+            border-collapse: collapse; /* Remove o espaçamento entre as bordas */
+            margin: 25px 0;
+            font-size: 0.9em;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border-radius: 8px; /* Cantos arredondados */
+            overflow: hidden; /* Garante que o conteúdo respeite os cantos arredondados */
+        }
+
+        /* Estilo para o novo botão de adicionar (verde) */
+        .btn-adicionar {
+            background-color: #009879;
+        }
+
+        /* Estilo do cabeçalho da tabela */
+        .ninja-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Estilo das células (cabeçalho e corpo) */
+        .ninja-table th,
+        .ninja-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-right: 1px solid #dddddd;
+        }
+
+        .ninja-table th:last-child,
+        .ninja-table td:last-child {
+            border-right: none;
+        }
+
+        /* Estilo das linhas do corpo da tabela */
+        .ninja-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        /* Linhas zebradas (alternando cores) */
+        .ninja-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        /* Efeito ao passar o mouse sobre a linha */
+        .ninja-table tbody tr:hover {
+            background-color: #f1f1f1;
+            font-weight: bold;
+            color: #009879;
+        }
+
+        /* Remove a borda da última linha */
+        .ninja-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        /* Estilo para a coluna de ações */
+        .ninja-table .actions {
+            text-align: center;
+        }
+
+
+        /* === ESTILIZAÇÃO DOS BOTÕES BONITOS === */
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 4px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px); /* Efeito de "levantar" */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Cores específicas para cada botão */
+        .btn-details {
+            background-color: #3498db; /* Azul */
+        }
+
+        .btn-edit {
+            background-color: #f1c40f; /* Amarelo */
+        }
+
+        .btn-delete {
+            background-color: #e74c3c; /* Vermelho */
+        }
+    </style>
+</head>
+<body>
+<div class="table-header-controls">
+    <h1>Tabela de ninjas</h1>
+    <a class="btn btn-adicionar" th:href="@{/ninjas/ui/criar}">Adicionar Novo Ninja</a>
+</div>
+
+<table class="ninja-table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Email</th>
+        <th>Rank</th>
+        <th class="actions">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ninja: ${ninjas}">
+        <td th:text="${ninja.id}"></td>
+        <td th:text="${ninja.nome}"></td>
+        <td th:text="${ninja.idade}"></td>
+        <td th:text="${ninja.email}"></td>
+        <td th:text="${ninja.rank}"></td>
+
+        <td class="actions">
+            <a class="btn btn-details" th:href="@{/ninjas/ui/listar/{id}(id=${ninja.id})}">Ver detalhes</a>
+            <a class="btn btn-edit" th:href="@{/ninjas/ui/alterar/{id}(id=${ninja.id})}">Alterar</a>
+            <a class="btn btn-delete" th:href="@{/ninjas/ui/deletar/{id}(id=${ninja.id})}">Deletar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

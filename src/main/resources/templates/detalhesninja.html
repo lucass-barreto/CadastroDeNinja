@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Ninja</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* === ESTILOS GERAIS === */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            /* Centraliza o card na tela */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* === CARD DE DETALHES DO NINJA === */
+        .ninja-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 30px 40px;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        .card-header {
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-header h1 {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .card-header .ninja-name {
+            color: #009879; /* Cor de destaque */
+        }
+
+        .card-body .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 5px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 1.1em;
+        }
+
+        .card-body .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-item strong {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .detail-item span {
+            color: #333;
+        }
+
+        /* Seção especial para a Missão */
+        .mission-details {
+            background-color: #f9f9f9;
+            border: 1px solid #e9e9e9;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .mission-details h3 {
+            margin-top: 0;
+            text-align: center;
+            color: #34495e;
+        }
+
+        .card-footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #34495e;
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #4a6572;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="ninja-card">
+    <div class="card-header">
+        <h1>Detalhes do Ninja: <br> <span class="ninja-name" th:text="${ninja.nome}">Nome do Ninja</span></h1>
+    </div>
+
+    <div class="card-body">
+        <div class="detail-item">
+            <strong>ID:</strong>
+            <span th:text="${ninja.id}">0</span>
+        </div>
+        <div class="detail-item">
+            <strong>Idade:</strong>
+            <span th:text="${ninja.idade}">0</span>
+        </div>
+        <div class="detail-item">
+            <strong>Email:</strong>
+            <span th:text="${ninja.email}">email@dominio.com</span>
+        </div>
+        <div class="detail-item">
+            <strong>Rank:</strong>
+            <span th:text="${ninja.rank}">Rank</span>
+        </div>
+
+        <div class="mission-details" th:if="${ninja.missao != null}">
+            <h3>Missão Atual</h3>
+            <div class="detail-item">
+                <strong>Nome:</strong>
+                <span th:text="${ninja.missao.nome}">Nome da Missão</span>
+            </div>
+            <div class="detail-item">
+                <strong>Dificuldade:</strong>
+                <span th:text="${ninja.missao.dificuldade}">Dificuldade</span>
+            </div>
+        </div>
+
+        <div class="mission-details" th:if="${ninja.missao == null}">
+            <p>Este ninja não possui nenhuma missão cadastrada no momento.</p>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <a th:href="@{/ninjas/ui/listar}" class="back-button">Voltar para a Lista</a>
+    </div>
+</div>
+
+</body>
+</html>
